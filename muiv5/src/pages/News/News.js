@@ -1,8 +1,11 @@
 import React from 'react'
+import Grid from '@mui/material/Grid';
 
 const News=() => {
     return (
-        <div>News</div>
+        <Grid item xs={9}>
+            <div>News</div>
+        </Grid>
     )
 }
 

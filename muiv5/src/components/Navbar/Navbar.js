@@ -9,7 +9,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
 
 import { mainNavbarItems } from './constants/NavbarItems';
 import { navbarStyles } from './styles';
@@ -18,7 +17,6 @@ const Navbar=() => {
     const navigate=useNavigate();
 
     return (
-        // <Grid item xs={3}>
         <Drawer
             sx={navbarStyles.drawer}
             variant="permanent"
@@ -40,7 +38,6 @@ const Navbar=() => {
             </List>
             <Divider />
         </Drawer>
-        // </Grid>
     )
 }
 

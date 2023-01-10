@@ -1,8 +1,11 @@
 import React from 'react'
+import Grid from '@mui/material/Grid';
 
 const Login=() => {
     return (
-        <div>Login</div>
+        <Grid item xs={9}>
+            <div>Login</div>
+        </Grid>
     )
 }
 

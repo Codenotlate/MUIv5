@@ -1,8 +1,9 @@
 import React from 'react'
+import Grid from '@mui/material/Grid';
 
 const Trash=() => {
     return (
-        <div>Trash</div>
+        <Grid item xs={9}><div>Trash</div></Grid>
     )
 }
 
