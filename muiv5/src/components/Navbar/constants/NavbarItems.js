@@ -9,31 +9,31 @@ export const mainNavbarItems=[
     {
         id: 0,
         icon: <AdbTwoToneIcon />,
-        label: 'Label1',
+        label: 'Home',
         route: 'pathHome',
     },
     {
         id: 1,
         icon: <AgricultureTwoToneIcon />,
-        label: 'Label2',
+        label: 'News',
         route: 'pathNews',
     },
     {
         id: 2,
         icon: <AddToDriveTwoToneIcon />,
-        label: 'Label3',
+        label: 'Notes',
         route: 'pathNotes',
     },
     {
         id: 3,
         icon: <AlarmAddTwoToneIcon />,
-        label: 'Label4',
+        label: 'Trash',
         route: 'pathTrash',
     },
     {
         id: 4,
         icon: <AnchorTwoToneIcon />,
-        label: 'Label5',
+        label: 'Login',
         route: 'pathLogin',
     },
 ]
