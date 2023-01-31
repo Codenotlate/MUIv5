@@ -1,11 +1,18 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
 
+import NotificationMsg from '../../components/common/NotificationMsg/NotificationMsg';
+
+
 const News=() => {
     return (
         <Grid item xs={9}>
-            <div>News</div>
+            News
+            <NotificationMsg badgeColor="secondary" badgeContent={100} iconColor="action" />
+
+
         </Grid>
+
     )
 }
 
