@@ -5,10 +5,25 @@ import NotificationMsg from '../../components/common/NotificationMsg/Notificatio
 
 
 const News=() => {
+    const fakeNotificatioData=[
+        {
+            id: 0,
+            label: "message 1"
+        },
+        {
+            id: 1,
+            label: "message 2"
+        },
+        {
+            id: 2,
+            label: "message 3"
+        },
+    ]
+
     return (
         <Grid item xs={9}>
             News
-            <NotificationMsg badgeColor="secondary" badgeContent={100} iconColor="action" />
+            <NotificationMsg badgeColor="secondary" iconColor="action" msgDataList={fakeNotificatioData} />
 
 
         </Grid>
