@@ -1,17 +1,30 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
+import Box from '@mui/material/Box';
 
-
-import Grid from '@mui/material/Grid';
+import Header from './components/Header/Header';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const drawerWidth=240;
+  const [title, setTitle]=useState("");
+  const location=useLocation();
+
+  useEffect(() => {
+    // console.log(location.pathname);
+    const parsedTitle=location.pathname.replace(/\W/g, '');
+    setTitle(parsedTitle.slice(4)+' Page Title');
+  }, [location])
+
+
   return (
-    <Grid container>
-      <Grid item xs={3}><Navbar /></Grid>
-
-      <Outlet />
-    </Grid>
-
+    <Box sx={{ display: 'flex' }}>
+      <Navbar />
+      <Box sx={{ display: 'flex', flexDirection: 'column', width: `calc(100% - ${drawerWidth}px)` }}>
+        <Header title={title} />
+        <Outlet />
+      </Box>
+    </Box>
   );
 }
 

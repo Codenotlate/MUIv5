@@ -1,5 +1,4 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
 import CommonButton from '../../components/common/CommonButton/CommonButton';
 
 
@@ -26,7 +25,7 @@ const Home=() => {
 
     };
     return (
-        <Grid item xs={9}>
+        <div>
             <div>This is the Home page.</div>
             <CommonButton variant="contained" sx={buttonStyles}>
                 HomeButton Contained
@@ -34,7 +33,7 @@ const Home=() => {
             <CommonButton variant="outlined" sx={buttonStyles}>
                 HomeButton Outlined
             </CommonButton>
-        </Grid>
+        </div>
     )
 }
 
