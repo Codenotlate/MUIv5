@@ -55,4 +55,5 @@ export const dashboardTheme=createTheme({
             textTransform: 'capitalize',
         },
     },
+
 });
