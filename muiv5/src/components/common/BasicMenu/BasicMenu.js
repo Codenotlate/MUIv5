@@ -16,8 +16,8 @@ const BasicMenu=({ anchorEl, handleClose, open, menuItems }) => {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {menuItems.map((item) => (
-                    <MenuItem onClick={handleClose}>{item.label}</MenuItem>
+                {menuItems.map((item, idx) => (
+                    <MenuItem key={idx} onClick={handleClose}>{item.label}</MenuItem>
                 ))}
             </Menu>
         </div>
