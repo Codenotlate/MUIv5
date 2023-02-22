@@ -15,6 +15,7 @@ import { cardHeaderStyles } from './styles';
 
 const Login=() => {
     const [modalOpen, setModalOpen]=useState(false);
+    const [users, setUsers]=useState([]);
 
     const getHeader=() => {
         const handleSearch=(event) => {
@@ -54,15 +55,32 @@ const Login=() => {
         )
     }
 
+    const addNewUser=(data) => {
+        // console.log(data);
+        // setUsers((oldUsers) => (oldUsers.concat([data])));
+        setUsers((oldUsers) => ([...oldUsers, { ...data }]));
+        setModalOpen(false);
+    }
+
     const getContent=() => {
         return (
             <Box>
-                <Typography
-                    align='center'
-                    sx={{ fontSize: '1.3rem', margin: '40px 16px', color: 'rgba(0,0,0,0.6)' }}
-                >
-                    This is the content part
-                </Typography>
+                {users.length?
+                    users.map((user) => (
+                        <Box key={user.userId} sx={{ marginBottom: '20px' }}>
+                            <Typography>User ID: {user.userId}</Typography>
+                            <Typography>Email: {user.email}</Typography>
+                            <Typography>Phone Number: {user.phoneNumber}</Typography>
+                        </Box>
+                    )):
+                    <Typography
+                        align='center'
+                        sx={{ fontSize: '1.3rem', margin: '40px 16px', color: 'rgba(0,0,0,0.6)' }}
+                    >
+                        This is the content part
+                    </Typography>
+                }
+
 
             </Box>
         )
@@ -76,6 +94,7 @@ const Login=() => {
             <NewUserModal
                 open={modalOpen}
                 handleClose={() => setModalOpen(false)}
+                addNewUser={addNewUser}
             />
         </GridWrapper>
     )

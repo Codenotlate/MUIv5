@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box'
 import { useForm } from 'react-hook-form';
@@ -7,9 +7,15 @@ import * as yup from 'yup';
 
 import BasicModal from '../common/BasicModal/BasicModal'
 
+const defaultInputValues={
+    userId: '',
+    email: '',
+    phoneNumber: ''
+};
 
+const NewUserModal=({ open, handleClose, addNewUser }) => {
+    const [values, setValues]=useState(defaultInputValues);
 
-const NewUserModal=({ open, handleClose }) => {
     const modalStyles={
         inputFields: {
             display: 'flex',
@@ -40,9 +46,13 @@ const NewUserModal=({ open, handleClose }) => {
     const { register, handleSubmit, formState: { errors } }=useForm({ resolver: yupResolver(validationSchema) });
 
     const addUser=(data) => {
-        console.log(data);
-        handleClose();
+        // console.log(data);
+        addNewUser(data);
     }
+
+    useEffect(() => {
+        setValues(defaultInputValues);
+    }, [open])
 
 
     const getContent=() => {
@@ -55,6 +65,8 @@ const NewUserModal=({ open, handleClose }) => {
                     error={errors.userId? true:false}
                     helperText={errors.userId?.message}
                     {...register('userId')}
+                    value={values.userId}
+                    onChange={(e) => setValues({ ...values, userId: e.target.value })}
                 />
 
                 <TextField
@@ -64,6 +76,8 @@ const NewUserModal=({ open, handleClose }) => {
                     error={errors.email? true:false}
                     helperText={errors.email?.message}
                     {...register('email')}
+                    value={values.email}
+                    onChange={(e) => setValues({ ...values, email: e.target.value })}
                 />
                 <TextField
                     label="Phone #"
@@ -72,6 +86,8 @@ const NewUserModal=({ open, handleClose }) => {
                     error={errors.phoneNumber? true:false}
                     helperText={errors.phoneNumber?.message}
                     {...register('phoneNumber')}
+                    value={values.phoneNumber}
+                    onChange={(e) => setValues({ ...values, phoneNumber: e.target.value })}
                 />
             </Box>
         )
