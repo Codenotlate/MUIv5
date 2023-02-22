@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BasicCard from '../../components/common/BasicCard/BasicCard'
 import SearchBar from '../../components/common/SearchBar/SearchBar'
 import Box from '@mui/material/Box';
@@ -9,23 +9,12 @@ import IconButton from '@mui/material/IconButton';
 
 import CommonButton from '../../components/common/CommonButton/CommonButton';
 import GridWrapper from '../../components/common/GridWrapper/GridWrapper';
+import NewUserModal from '../../components/NewUserModal/NewUserModal';
+import { cardHeaderStyles } from './styles';
 
 
 const Login=() => {
-    const cardHeaderStyles={
-        wrapper: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '0px 20px',
-            height: '65px',
-            backgroundColor: '#f5f5f5',
-            borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
-        },
-        addUserButton: {
-            fontSize: '1rem'
-        }
-    }
+    const [modalOpen, setModalOpen]=useState(false);
 
     const getHeader=() => {
         const handleSearch=(event) => {
@@ -33,7 +22,8 @@ const Login=() => {
         }
 
         const addUser=() => {
-            console.log('Add User Clicked!');
+            // console.log('Add User Clicked!');
+            setModalOpen(true)
         }
 
         return (
@@ -41,19 +31,25 @@ const Login=() => {
                 <SearchBar
                     placeholder='You can search something here...'
                     onChange={handleSearch}
-                    searchBarWidth='720px'
+                // searchBarWidth='720px'
                 />
-                <CommonButton
-                    variant='contained'
-                    onClick={addUser}
-                    size="large"
-                    sx={cardHeaderStyles.addUserButton}
-                >
-                    Add User
-                </CommonButton>
-                <IconButton>
-                    <RefreshIcon />
-                </IconButton>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                }}>
+                    <CommonButton
+                        variant='contained'
+                        onClick={addUser}
+                        size="large"
+                        sx={cardHeaderStyles.addUserButton}
+                    >
+                        Add User
+                    </CommonButton>
+                    <IconButton>
+                        <RefreshIcon />
+                    </IconButton>
+                </Box>
             </Box>
         )
     }
@@ -72,9 +68,15 @@ const Login=() => {
         )
     }
 
+
+
     return (
         <GridWrapper>
             <BasicCard header={getHeader()} content={getContent()} />
+            <NewUserModal
+                open={modalOpen}
+                handleClose={() => setModalOpen(false)}
+            />
         </GridWrapper>
     )
 }
