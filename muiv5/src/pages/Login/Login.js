@@ -16,10 +16,24 @@ import { cardHeaderStyles } from './styles';
 const Login=() => {
     const [modalOpen, setModalOpen]=useState(false);
     const [users, setUsers]=useState([]);
+    const [searchResults, setSearchResults]=useState(users);
+
 
     const getHeader=() => {
         const handleSearch=(event) => {
-            console.log(event.target.value);
+            filterData(event.target.value);
+        }
+
+        const filterData=(value) => {
+            const lowercaseVal=value.toLowerCase().trim();
+            if (lowercaseVal!=='') {
+                const filteredRes=users.filter((item) => {
+                    return Object.keys(item).some((key) => item[key].toString().toLowerCase().includes(lowercaseVal));
+                })
+                setSearchResults(filteredRes);
+            } else {
+                setSearchResults(users);
+            }
         }
 
         const addUser=() => {
@@ -30,7 +44,7 @@ const Login=() => {
         return (
             <Box sx={cardHeaderStyles.wrapper}>
                 <SearchBar
-                    placeholder='You can search something here...'
+                    placeholder='Find something..'
                     onChange={handleSearch}
                 // searchBarWidth='720px'
                 />
@@ -57,16 +71,16 @@ const Login=() => {
 
     const addNewUser=(data) => {
         // console.log(data);
-        // setUsers((oldUsers) => (oldUsers.concat([data])));
         setUsers((oldUsers) => ([...oldUsers, { ...data }]));
+        setSearchResults((oldUsers) => ([...oldUsers, { ...data }]));
         setModalOpen(false);
     }
 
     const getContent=() => {
         return (
             <Box>
-                {users.length?
-                    users.map((user) => (
+                {searchResults.length?
+                    searchResults.map((user) => (
                         <Box key={user.userId} sx={{ marginBottom: '20px' }}>
                             <Typography>User ID: {user.userId}</Typography>
                             <Typography>Email: {user.email}</Typography>
@@ -77,7 +91,7 @@ const Login=() => {
                         align='center'
                         sx={{ fontSize: '1.3rem', margin: '40px 16px', color: 'rgba(0,0,0,0.6)' }}
                     >
-                        This is the content part
+                        There is no user for now.
                     </Typography>
                 }
 
