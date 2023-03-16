@@ -11,10 +11,11 @@ const BasicCard=({ header, content }) => {
         borderRadius: '8px',
     }
 
+
     return (
         <Card sx={basicCardStyles}>
             {header}
-            <CardContent>
+            <CardContent >
                 {content}
 
             </CardContent>
