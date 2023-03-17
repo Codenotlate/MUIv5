@@ -5,4 +5,7 @@ export const GridWrapperStyles={
     // minHeight: 'calc(100vh-166px)',
     // marginLeft: '320px',
     backgroundColor: '#eaeff1',
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center'
 }

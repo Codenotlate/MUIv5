@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 
 import { GridWrapperStyles } from './styles';
 
+
 const GridWrapper=({ children }) => {
     return (
         <Grid item xs={12} sx={GridWrapperStyles}>
